@@ -6,8 +6,8 @@ export const getCoinsList = createAsyncThunk('coins', async () => {
   try {
     const { data } = await axios(apiUri, {
       headers: {
-        'x-rapidapi-key': apiKey,
-        'x-rapidapi-host': apiHost,
+        'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY,
+        'x-rapidapi-host': process.env.REACT_APP_CRYPTO_RAPIDAPI_HOST,
       },
     });
     return data.data.coins;
@@ -44,8 +44,8 @@ export const getCoinById = createAsyncThunk('coin', async (id) => {
       `https://coinranking1.p.rapidapi.com/coin/${id}`,
       {
         headers: {
-          'x-rapidapi-key': apiKey,
-          'x-rapidapi-host': apiHost,
+          'x-rapidapi-key': process.env.REACT_APP_RAPIDAPI_KEY,
+          'x-rapidapi-host': process.env.REACT_APP_CRYPTO_RAPIDAPI_HOST,
         },
       }
     );
