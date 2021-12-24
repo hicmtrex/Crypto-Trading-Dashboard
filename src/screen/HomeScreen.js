@@ -24,7 +24,7 @@ const HomeScreen = () => {
     <Row className='mt-5'>
       <h1 className='text-center mb-2'>Cryptocurrency Exchange</h1>
       {error && <Alert variant='danger'>{error}</Alert>}
-      <Table striped bordered hover>
+      <Table striped bordered hover responsive>
         <thead>
           <tr>
             <th>icon</th>

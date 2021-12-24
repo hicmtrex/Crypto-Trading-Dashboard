@@ -14,11 +14,10 @@ const TableScreen = () => {
     }
   };
 
-  console.log(plans);
   return (
     <>
       <h1 className='text-center my-3'>Trade History</h1>
-      <Table striped bordered hover>
+      <Table striped bordered hover responsive>
         <thead>
           <tr>
             <th>#</th>
