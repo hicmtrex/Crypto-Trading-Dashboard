@@ -1,21 +1,16 @@
-import React, { useContext, useEffect } from 'react';
-import { Alert, Button, Row, Spinner, Table } from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import { Alert, Row, Table } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import CoinTable from '../components/CoinTable';
 import Loader from '../components/Loader';
-import StoreContext from '../context/store-context';
 import { getCoinsList } from '../store/slices/coinSlices';
 
 const HomeScreen = () => {
-  //const { getAllCoins, coins, loading, error } = useContext(StoreContext);
-
   const { coins, loading, error } = useSelector((state) => state.coinsList);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCoinsList());
-    //getAllCoins();
-    console.log(coins);
   }, [dispatch]);
 
   if (loading) return <Loader />;

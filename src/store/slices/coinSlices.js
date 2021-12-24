@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { apiHost, apiKey, apiUri } from '../../data/apiUri';
+import { apiUri } from '../../data/apiUri';
 
 export const getCoinsList = createAsyncThunk('coins', async () => {
   try {

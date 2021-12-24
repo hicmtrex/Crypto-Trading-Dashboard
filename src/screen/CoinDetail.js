@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Col, Row, Image, ListGroup } from 'react-bootstrap';
 import Loader from '../components/Loader';
-import HTMLReactParser from 'html-react-parser';
 import {
   MoneyCollectOutlined,
   DollarCircleOutlined,
@@ -26,7 +25,7 @@ const CoinDetail = () => {
 
   useEffect(() => {
     dispatch(getCoinById(id));
-  }, [dispatch, params]);
+  }, [dispatch, id]);
 
   const description = coin?.description?.replace(/<[^>]*>?/gm, '');
 
@@ -107,8 +106,8 @@ const CoinDetail = () => {
             An overview showing the statistics of {coin?.name}, such as the base
             and quote currency, the rank, and trading volume.
           </p>
-          {stats.map(({ icon, title, value }) => (
-            <Col className='coin-stats'>
+          {stats.map(({ icon, title, value }, index) => (
+            <Col key={index} className='coin-stats'>
               <Col className='coin-stats-name'>
                 <p>{icon}</p>
                 <p>{title}</p>
@@ -125,8 +124,8 @@ const CoinDetail = () => {
               base and quote currency, the rank, and trading volume.
             </p>
           </Col>
-          {genericStats.map(({ icon, title, value }) => (
-            <Col className='coin-stats'>
+          {genericStats.map(({ icon, title, value }, index) => (
+            <Col key={index} className='coin-stats'>
               <Col className='coin-stats-name'>
                 <p>{icon}</p>
                 <p>{title}</p>
@@ -157,6 +156,7 @@ const CoinDetail = () => {
                   href={link.url}
                   className='link-name float-md-end'
                   target='_blank'
+                  rel='noreferrer'
                 >
                   {link?.name}
                 </a>
